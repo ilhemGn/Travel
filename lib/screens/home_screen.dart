@@ -14,7 +14,11 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Discover'),
+        backgroundColor: const Color.fromARGB(255, 6, 61, 87),
+        title: const Text(
+          'Discover',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           IconButton(
               onPressed: () {
@@ -25,6 +29,7 @@ class HomeScreen extends ConsumerWidget {
               },
               icon: const Icon(
                 Icons.add_box_rounded,
+                color: Colors.white,
               )),
         ],
       ),

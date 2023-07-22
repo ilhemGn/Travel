@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImageInput extends StatefulWidget {
-  const ImageInput({super.key});
+  const ImageInput({super.key, required this.onPickImage});
+
+  final void Function(File?) onPickImage;
 
   @override
   State<ImageInput> createState() => _ImageInputState();
@@ -23,6 +25,8 @@ class _ImageInputState extends State<ImageInput> {
       _selectedImage = File(takenImage
           .path); // path to navigate to where it was stored in the device
     });
+
+    widget.onPickImage(_selectedImage);
   }
 
   void _takePictureGallery() async {

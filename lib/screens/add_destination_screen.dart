@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:travel_app/models/destination_model.dart';
+import 'package:travel_app/models/location_model.dart';
 import 'package:travel_app/providers/distination_provider.dart';
 import 'package:travel_app/widgets/custom_input.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:travel_app/widgets/image_input.dart';
+import 'package:travel_app/widgets/location_input.dart';
 
 class AddDestinationScreen extends ConsumerStatefulWidget {
   const AddDestinationScreen({super.key});
@@ -16,6 +20,16 @@ class AddDestinationScreen extends ConsumerStatefulWidget {
 class _AddDestinationScreenState extends ConsumerState<AddDestinationScreen> {
   final _formKey = GlobalKey<FormState>();
   String _enteredName = '';
+  File? _selectedPicture;
+  LocationModel? _selectedLocation;
+
+  void getTakenPicture(File? takenPicture) {
+    _selectedPicture = takenPicture;
+  }
+
+  void getPickedLocation(LocationModel? location) {
+    _selectedLocation = location;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +37,7 @@ class _AddDestinationScreenState extends ConsumerState<AddDestinationScreen> {
         appBar: AppBar(
           title: const Text('Add new destination'),
         ),
-        body: Padding(
+        body: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
@@ -45,15 +59,24 @@ class _AddDestinationScreenState extends ConsumerState<AddDestinationScreen> {
                 },
               ),
               const SizedBox(height: 10),
-              const ImageInput(),
+              ImageInput(
+                onPickImage: getTakenPicture,
+              ),
+              const SizedBox(height: 10),
+              LocationInput(
+                onPickLocation: getPickedLocation,
+              ),
               const SizedBox(height: 20),
               ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState!.validate() &&
+                        _selectedPicture != null &&
+                        _selectedLocation != null) {
                       _formKey.currentState!.save();
-                      ref
-                          .read(destProvider.notifier)
-                          .addNewDest(DestModel(name: _enteredName));
+                      ref.read(destProvider.notifier).addNewDest(DestModel(
+                          name: _enteredName,
+                          image: _selectedPicture!,
+                          location: _selectedLocation!));
                     }
                     Navigator.pop(context);
                   },
