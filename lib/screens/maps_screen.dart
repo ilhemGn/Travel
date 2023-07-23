@@ -23,7 +23,19 @@ class _MapsScreenState extends State<MapsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.isSelected ? 'Location' : 'Pick a Loaction'),
+        backgroundColor: Colors.white,
+        title: Text(
+          widget.isSelected ? 'Location' : 'Pick a Loaction',
+          style: const TextStyle(color: Colors.black),
+        ),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              color: Colors.black,
+            )),
         actions: widget.isSelected
             ? []
             : [
@@ -31,7 +43,7 @@ class _MapsScreenState extends State<MapsScreen> {
                   onPressed: () {
                     Navigator.pop(context, _pickedLocation);
                   },
-                  icon: const Icon(Icons.save),
+                  icon: const Icon(Icons.save, color: Colors.black),
                 ),
               ],
       ),

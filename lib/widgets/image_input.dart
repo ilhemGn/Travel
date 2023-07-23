@@ -43,6 +43,7 @@ class _ImageInputState extends State<ImageInput> {
       _selectedImage = File(takenImage
           .path); // path to navigate to where it was stored in the device
     });
+    widget.onPickImage(_selectedImage);
   }
 
   @override
@@ -50,10 +51,10 @@ class _ImageInputState extends State<ImageInput> {
     return Container(
       alignment: Alignment.center,
       width: double.infinity,
-      height: 250,
+      height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: const Color.fromARGB(255, 237, 236, 236),
+        color: Colors.white,
       ),
       child: _selectedImage != null
           ? GestureDetector(
@@ -72,15 +73,33 @@ class _ImageInputState extends State<ImageInput> {
           : Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Image.asset(
+                  'assets/images/img_logo.png',
+                  width: 50,
+                  height: 50,
+                ),
+                const SizedBox(height: 10),
                 TextButton.icon(
-                  icon: const Icon(Icons.camera_enhance_rounded),
+                  icon: const Icon(
+                    Icons.camera_enhance_rounded,
+                    color: Colors.black,
+                  ),
                   onPressed: _takePicture,
-                  label: const Text('Pick your image'),
+                  label: const Text(
+                    'Pick your image',
+                    style: TextStyle(color: Colors.black54),
+                  ),
                 ),
                 TextButton.icon(
-                  icon: const Icon(Icons.browse_gallery_rounded),
+                  icon: const Icon(
+                    Icons.browse_gallery_rounded,
+                    color: Colors.black,
+                  ),
                   onPressed: _takePictureGallery,
-                  label: const Text('Pick image from gallery'),
+                  label: const Text(
+                    'Pick image from gallery',
+                    style: TextStyle(color: Colors.black54),
+                  ),
                 ),
               ],
             ),

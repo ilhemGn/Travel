@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/screens/home_screen.dart';
+import 'package:travel_app/screens/tabbar_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -21,7 +21,7 @@ class WelcomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Text(
-                'Explore Your Favorite Journey',
+                'Let\'s Enjoy Your Dream Vacation',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Colors.white,
@@ -30,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               const Text(
-                'Step Out of Your Comfort Zone, into the World of Exploration!',
+                'Create your map of memories and let\'s journey together!',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Colors.white,
@@ -52,7 +52,7 @@ class WelcomeScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomeScreen()));
+                          builder: (context) => const TabBarScreen()));
                 },
               ),
             ],

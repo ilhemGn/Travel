@@ -11,7 +11,9 @@ class DestinationList extends StatelessWidget {
     return ListView.builder(
         padding: const EdgeInsets.all(20),
         itemCount: destinations.length,
-        itemBuilder: (context, index) =>
-            DestinationItem(destination: destinations[index]));
+        itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: DestinationItem(destination: destinations[index]),
+            ));
   }
 }

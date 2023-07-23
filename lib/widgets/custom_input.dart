@@ -5,6 +5,7 @@ class CustomInputField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.labelText,
+    this.maxLines = 1,
     this.keyboardType,
     this.prefixText,
     required this.validator,
@@ -13,6 +14,7 @@ class CustomInputField extends StatelessWidget {
 
   final String hintText;
   final String labelText;
+  final int? maxLines;
   final TextInputType? keyboardType;
   final String? prefixText;
   final String? Function(String?)? validator;
@@ -20,28 +22,36 @@ class CustomInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: keyboardType ?? TextInputType.text,
-      decoration: InputDecoration(
-        prefixText: prefixText ?? '',
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          borderSide: BorderSide.none,
-        ),
-        filled: true,
-        hintText: hintText,
-        hintStyle: const TextStyle(
-            color: Color.fromARGB(255, 221, 220, 220),
-            fontSize: 16,
-            fontWeight: FontWeight.w400),
-        label: Text(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
           labelText,
           style: const TextStyle(
-              color: Colors.black54, fontSize: 16, fontWeight: FontWeight.w500),
+              color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w500),
         ),
-      ),
-      validator: validator,
-      onSaved: onSave,
+        const SizedBox(height: 8),
+        TextFormField(
+          keyboardType: keyboardType ?? TextInputType.text,
+          maxLines: maxLines,
+          decoration: InputDecoration(
+            prefixText: prefixText ?? '',
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(26)),
+              borderSide: BorderSide.none,
+            ),
+            filled: true,
+            fillColor: Colors.white,
+            hintText: hintText,
+            hintStyle: const TextStyle(
+                color: Color.fromARGB(255, 193, 193, 193),
+                fontSize: 15,
+                fontWeight: FontWeight.w400),
+          ),
+          validator: validator,
+          onSaved: onSave,
+        ),
+      ],
     );
   }
 }

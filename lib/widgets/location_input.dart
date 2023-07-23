@@ -85,7 +85,20 @@ class _LocationInputState extends State<LocationInput> {
               height: double.infinity,
             ),
           )
-        : const Text('No Location Selected');
+        : Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/location_logo.png',
+                width: 60,
+                height: 60,
+              ),
+              const Text(
+                'No Location Selected',
+                style: TextStyle(color: Colors.black54),
+              ),
+            ],
+          );
 
     return Column(
       children: [
@@ -94,7 +107,7 @@ class _LocationInputState extends State<LocationInput> {
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: const Color.fromARGB(255, 236, 236, 236),
+            color: Colors.white,
           ),
           alignment: Alignment.center,
           child: isGettingPosition
@@ -107,13 +120,16 @@ class _LocationInputState extends State<LocationInput> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextButton.icon(
-                icon: const Icon(Icons.location_on),
+                icon: const Icon(
+                  Icons.location_on,
+                  color: Colors.black,
+                ),
                 onPressed: _getCurrentLocation,
                 label: const Text(
                   'Get Current Location',
+                  style: TextStyle(color: Colors.black87),
                 )),
             TextButton.icon(
-                icon: const Icon(Icons.location_searching_sharp),
                 onPressed: () async {
                   final pickedCoordinates = await Navigator.push<LatLng>(
                       context,
@@ -125,8 +141,13 @@ class _LocationInputState extends State<LocationInput> {
                   await returnLocation(
                       pickedCoordinates.latitude, pickedCoordinates.longitude);
                 },
+                icon: const Icon(
+                  Icons.location_searching_sharp,
+                  color: Colors.black,
+                ),
                 label: const Text(
                   'Select on Map',
+                  style: TextStyle(color: Colors.black87),
                 )),
           ],
         ),
