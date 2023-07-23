@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:travel_app/models/destination_model.dart';
 import 'package:travel_app/models/location_model.dart';
 import 'package:travel_app/providers/distination_provider.dart';
 import 'package:travel_app/widgets/custom_input.dart';
@@ -73,10 +72,8 @@ class _AddDestinationScreenState extends ConsumerState<AddDestinationScreen> {
                         _selectedPicture != null &&
                         _selectedLocation != null) {
                       _formKey.currentState!.save();
-                      ref.read(destProvider.notifier).addNewDest(DestModel(
-                          name: _enteredName,
-                          image: _selectedPicture!,
-                          location: _selectedLocation!));
+                      ref.read(destProvider.notifier).addNewDest(
+                          _enteredName, _selectedPicture!, _selectedLocation!);
                     }
                     Navigator.pop(context);
                   },
