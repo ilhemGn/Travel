@@ -10,8 +10,7 @@ class WelcomeScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: NetworkImage(
-              'https://www.youknowboat.com/wp-content/uploads/2023/04/catamaran-boat-tour-Milos-Sykia-Kleftiko-with-lunch-on-board-snorkeling-swimming-turquoise-sea-of-the-coast-of-Milos-Greece.jpeg'),
+          image: AssetImage('assets/images/welcome.jpeg'),
           fit: BoxFit.cover,
         )),
         child: Padding(
