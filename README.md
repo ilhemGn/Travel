@@ -2,6 +2,9 @@
 
 Travel app is a captivating travel app designed with Flutter to preserve your most cherished travel memories and dream destinations. 
 
+[![Alt text](https://i.suar.me/32rx4/l)]()   
+
+
 ### Memorable Destination Collection: 
 Create a stunning collection of your favorite places and dream destinations. Store and organize your travel memories in one convenient and visually appealing space.
 ### Capture Memories: 
